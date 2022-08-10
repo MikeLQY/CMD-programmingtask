@@ -8,14 +8,16 @@ f = open('programming-task-example-data_(1).log', 'r')
 fline = f.readlines()
 p = re.compile(r'(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})')
 
-ip_set=set()
+ip_list=[]
 ip_dic={}
 
 for line in fline:
-   ip_set.add(p.search(line)[0])
-  
+    ip_address = p.search(line)[0]
+    if ip_address not in ip_list:
+        ip_list.append(ip_address)    
 
-print(ip_set)
+
+print(len(ip_list))
 
 
 f.close
