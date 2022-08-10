@@ -9,7 +9,7 @@ def uniq_ip(filename):
     uni_ip=[]
     # pattern for ip address, from 0.0.0.0 to 255.255.255.255
     # seprate to 3 groups 0-199, 200-249,250-255
-    p = r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
+    p = r'((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
     for line in fline:
         # append all IPs to the list
         ip_address = re.search(p,line).group()
@@ -50,7 +50,7 @@ def active_ip(filename):
     #A dictionary, IP as key, number of appearance as value
     ip_dict = {}
     # IP address pattern
-    p = r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
+    p = r'((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
     for line in fline:
         ip_address = re.search(p,line).group()
         if ip_address not in ip_dict:
@@ -73,9 +73,11 @@ def key_tuple(tuple_list):
         l.append(kv_tuple[0])
     return l
 
-    
+#check if an element of occured once in a list
 def occur_once(l, elem):
     return l.count(elem) == 1
+
+
 
 if __name__ == '__main__':
     n_uniip = len(uniq_ip('programming-task-example-data_(1).log'))
