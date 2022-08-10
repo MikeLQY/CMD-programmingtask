@@ -13,16 +13,16 @@ def uniq_ip(filename):
     ip_list=[]
     # pattern for ip address, from 0.0.0.0 to 255.255.255.255
     # seprate to 3 groups 0-199, 200-249,250-255
-    p = r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
-
+    p = r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.)(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
     for line in fline:
         ip_address = re.findall(p,line)
+        # append to list if the ip has not been seen
         if ip_address not in ip_list:
             ip_list.append(ip_address)    
-
     #close file
     f.close
-    return ip_list
+    return len(ip_list)
+
 def v_url(filename):
     f = open(filename, 'r')
     url_list = []
