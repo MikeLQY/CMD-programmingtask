@@ -13,8 +13,8 @@ def uniq_ip(filename):
     ip_list=[]
     # pattern for ip address, from 0.0.0.0 to 255.255.255.255
     # seprate to 3 groups 0-199, 200-249,250-255
-    p = r'([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5]\.){3}([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])'
-    
+    p = r'(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)'
+
     for line in fline:
         ip_address = re.findall(p,line)
         if ip_address not in ip_list:
