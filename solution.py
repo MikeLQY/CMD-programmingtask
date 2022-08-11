@@ -49,7 +49,7 @@ def v_url(filename):
     #sort url dictionary
     url_dic = sorted(url_dic.items(), key=lambda x: x[1], reverse=True)
     f.close
-    return key_tuple(url_dic)[0:3]
+    return key_tuple(url_dic)
 
 #The top 3 most active IP addresses
 def active_ip(filename):
@@ -75,7 +75,7 @@ def active_ip(filename):
     
     #close file
     f.close
-    return key_tuple(ip_dict)[0:3]
+    return key_tuple(ip_dict)
 
 # Extract keys from a list of key value tuple
 def key_tuple(tuple_list):
@@ -107,6 +107,7 @@ def test_url():
 
 
 if __name__ == '__main__':
+
     n_uniip = len(uniq_ip('programming-task-example-data_(1).log'))
     top_url = v_url('programming-task-example-data_(1).log')
     top_ip = active_ip('programming-task-example-data_(1).log')
